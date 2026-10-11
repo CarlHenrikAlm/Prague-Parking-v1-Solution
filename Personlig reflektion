@@ -1,0 +1,70 @@
+1. Sammanfattning
+
+Projektet Prague Parking v1.1 är en konsolapplikation i C# som hanterar parkering av bilar och motorcyklar med funktioner för att
+parkera, hämta, söka, flytta och visa en översikt över parkeringsplatser.
+Syftet var att skapa en användarvänlig lösning med tydlig struktur, korrekt datalogik och dokumenterad kod.
+Arbetet har gett en djupare förståelse för objektorienterad programmering, datatyper, felhantering och användarinteraktion i C#.
+
+
+
+2. Hur jag löste uppgiften
+
+Jag började med att analysera uppgiften och dela upp den i mindre delar och va de olika delarna behövde innehålla.
+Jag använde en array för att representera parkeringsplatser och skapade metoder för varje menyval för att strukturera.
+För att inte behöv ha 101 platser och deklarera 0'an använde jag mig av {spot + 1} format. 
+För att hantera tidpunkter använde jag DateTime.UtcNow och konverterade till lokal tid i Prag med TimeZoneInfo.
+Jag byggde upp en tydlig meny med piltangenter och Enter‑val, vilket gjorde applikationen intuitiv att använda.
+All kod strukturerades i regioner för läsbarhet.
+
+
+
+3. Utmaningar i uppgiften och hur de löstes
+
+Den största utmaningen var att hantera tidsstämplar korrekt och att visa både parkerings‑ och hämtningstid i lokal tid.
+Jag löste detta genom att använda ISO‑format ("O") för lagring och konvertering till lokal tid vid utskrift.
+En annan utmaning var att hantera flera fordon i samma plats som två motorcyklar.
+Det löstes genom att beräkna utrymme per plats och tillåta flera fordon så länge summan av storlekar inte överskred platsens kapacitet.
+Dessutom förbättrades felhanteringen med tydliga meddelanden och färgkodning (grönt för lyckat, rött för fel).
+Jag hade också en del problem med logiken som blev mer och mer komplicerad all eftersom mer data skulle lagras i samma string. 
+
+
+
+4. Metoder och modeller som använts för att lösa uppgiften
+
+Jag använde procedurorienterad struktur med statiska metoder för att hålla koden enkel och överskådlig.
+För datalagring användes arrays och string‑parsing med Split() för att separera fordonstyp, registreringsnummer och tidsstämpel.
+Jag tillämpade modulär design där varje menyval motsvarar en separat metod.
+Felhantering och användarfeedback byggdes med ConsoleColor och tydliga meddelanden.
+Arbetet följde en iterativ metod inspirerad av Agile‑principer, där jag testade och förbättrade funktioner stegvis.
+
+
+
+5. Hur jag skulle lösa uppgiften nästa gång, givet vad jag vet nu
+
+Med samma restriktioner på projektet hade jag börjat med att lägga större fokus på planeringen av datamodellen. 
+Genom att tidigt definiera  ett konsekvent format för hur fordonen skulle lagras hade jag kunnat undvika flera små justeringar. 
+Jag skulle nog skapat fler små hjälpfunktioner från start och prioritera input-validering tidigare i processen. 
+Jag hade också gett mig själv mer tid att se över andra program och läsa in mig djupare på olika metoder och lösningar för att 
+ge mig själv större förståelse och fler alternativ att lösa problem som uppstår. 
+Slutligen hade jag gett mig själv mer tid att fokusera på användarupplevelsen och UI'n. Nu är den väldigt avskalad och enkel. 
+
+
+
+6. Slutsats hemuppgift
+
+Hemuppgiften har gett en praktisk förståelse för hur man strukturerar ett mindre system i C#.
+Övningsuppgifterna har gett en bra grund och jag har märkt att mycket av dom har varit möjliga att applisera på projektet. 
+Jag har lärt mig att planering och tydlig kodstruktur är avgörande för att undvika komplexitet.
+Jag har också lärt mig hur jag lagrar och extraherar flera olika data ur samma string.  
+Projektet har stärkt min förmåga att felsöka, dokumentera och tänka i logiska steg.
+
+
+
+7. Slutsats kurs, så här långt
+
+Kursen har hittills gett en stabil grund i C#. 
+Steget ifrån att skriva små enklare program till att bygga ett, fortfarande litet men betydligt mycket större än 
+de övningsuppgifter vi gjort, program har varit ganska stort.
+Jag har fått insikt i hur säkerhet, struktur och dokumentation hänger ihop i utvecklingsprocessen.
+Arbetet med Prague Parking har visat hur teori omsätts i praktisk kod och hur viktigt det är att reflektera över sitt arbetssätt.
+Jag känner mig tryggare i C# och ser fram emot att tillämpa samma metodik i kommande projekt.
