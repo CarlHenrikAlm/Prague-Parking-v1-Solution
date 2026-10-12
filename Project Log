@@ -1,0 +1,122 @@
+Day 1 – Project Setup
+Work done
+Analyzed assignment requirements and divided tasks into logical components.
+
+Created initial project structure and defined main classes: Program, Menu, Vehicle, ParkingSpace.
+
+Planned workflow and menu navigation.
+
+Reflection
+Focused on understanding the problem domain and organizing the codebase. No major coding yet, but foundation established.
+
+Next steps
+[ ] Implement basic menu navigation.
+
+[ ] Define data structures for parking spots and vehicles.
+
+Day 2 – Core Design
+Work done
+Added class skeletons for Car, MC, and Truck.
+
+Designed array‑based parking logic (SpotCount = 100).
+
+Started timestamp and color‑coded system planning.
+
+Reflection
+Good progress on structure and logic. Timestamp handling still unclear.
+
+Next steps
+[ ] Implement timestamp storage and retrieval.
+
+[ ] Begin testing parking and retrieval functions.
+
+Day 3 – Implementation Phase
+Work done
+Implemented parking logic and timestamp recording using DateTime.UtcNow.
+
+Added color‑coded map visualization for parking status.
+
+Started error handling and menu interaction.
+
+Reflection
+Code compiles and runs. Need refinement in timestamp formatting and menu flow.
+
+Next steps
+[ ] Improve timestamp display (Prague local time).
+
+[ ] Add search and move vehicle functionality.
+
+Day 4 – Refinement
+Work done
+Added SearchForVehicle() and MoveVehicle() methods.
+
+Improved input validation for registration numbers.
+
+Enhanced menu navigation and error messages.
+
+Reflection
+Application becoming functional. Logic for moving vehicles works but needs edge‑case testing.
+
+Next steps
+[ ] Test all menu options.
+
+[ ] Add summary listing of all parked vehicles.
+
+Day 5 – Optimization
+Work done
+Restructured code for clarity and modularity.
+
+Added ListAllVehicles() to count and display cars and motorcycles.
+
+Verified timestamp accuracy and duration calculation.
+
+Reflection
+System stable and readable. Minor improvements needed for user feedback and formatting.
+
+Next steps
+[ ] Finalize README.md documentation.
+
+[ ] Conduct full test run.
+
+Day 6 – Testing and Review
+Work done
+Performed functional tests on all menu items.
+
+Fixed minor bugs in MoveVehicle() and RetrieveVehicle().
+
+Verified color‑coded map output.
+
+Reflection
+All major features complete. Code ready for documentation and submission.
+
+Next steps
+[ ] Write README.md with usage instructions.
+
+[ ] Add reflection section to GitHub log.
+
+Day 7 – Documentation
+Work done
+Created README.md draft describing project purpose, usage, and technical details.
+
+Added comments and improved code readability.
+
+Prepared logbook entries for GitHub.
+
+Reflection
+Focus on documentation and presentation. Code finalized.
+
+Next steps
+[ ] Review README.md for clarity.
+
+[ ] Publish project and logbook to GitHub.
+
+Day 8 – Finalization
+Work done
+Integrated timestamp display for both parked and retrieved vehicles.
+
+Verified all functions and menu flow.
+
+Completed reflection and final log entries.
+
+Reflection
+Project meets all requirements. Timestamp and parking logic fully functional.

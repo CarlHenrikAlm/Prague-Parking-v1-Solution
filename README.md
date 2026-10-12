@@ -1,83 +1,142 @@
-# Prague Parking v1 Solution
+Prague Parking v1
+C# Console Application
+By Carl‑Henrik Alm – KYH DevSecOps 2026
 
-# Prague Parking v1.2
+Overview
+Prague Parking is a console‑based parking management system written in C#. It simulates a parking facility with 100 parking spots, each capable of holding up to two “size units.” Cars occupy two units, while motorcycles occupy one. Multiple motorcycles can share a single spot as long as the total size does not exceed the spot capacity.
 
-A console-based parking application written in C#. It manages parking for cars and motorcycles in a 100-spot lot.
+The application provides functionality for parking, retrieving, searching, and moving vehicles, as well as displaying a visual parking map and listing all parked vehicles.
 
-## Requirements
+Features
+Park Vehicle
+User selects vehicle type: CAR or MC.
 
-- .NET 10 SDK
-- A terminal that supports console input and output
+Registration number is validated (1–10 characters, no spaces, #, or |).
 
-## Run
+The system checks whether the vehicle is already parked.
 
-From the project directory:
+The first available spot with enough capacity is selected.
 
+Vehicles are stored in the format:
+TYPE#REGNR#TIMESTAMP  
+Example from the code:
+"CAR#ABC123#2026-10-11T15:22:30.0000000Z"
 
+Arrival timestamps are stored in UTC and displayed in Prague local time.
 
+Retrieve Vehicle
+Searches for the vehicle by registration number.
 
+Calculates parking duration using stored arrival time.
 
-## Using the application
+Removes the vehicle from its spot.
 
-Navigate the menu with the **Up** and **Down** arrow keys, then press **Enter**. Choose **Exit** and confirm with **Y** to close the application.
+Displays arrival time, retrieval time, and total duration.
 
-Available actions:
+Search for Vehicle
+Locates the parking spot of a given registration number.
 
-- **Park vehicle** — choose car (`C`) or motorcycle (`M`), then enter a registration number.
-- **Retrieve vehicle** — remove a parked vehicle by registration number.
-- **Search for vehicle** — find a vehicle's spot by registration number.
-- **Move vehicle** — move a vehicle to another spot with sufficient capacity.
-- **Map of parking** — view spot occupancy: green is empty, yellow is partially occupied, and red is full.
-- **Show parked vehicle** — list parked vehicles and their spots.
+Returns the spot number or an error if not found.
 
-Registration numbers are trimmed and converted to uppercase. They must contain 1–10 characters and cannot contain spaces, `#`, or `|`.
+Move Vehicle
+Moves a vehicle from its current spot to a user‑specified target spot.
 
-## Parking capacity
+Validates that the target spot has enough remaining capacity.
 
-The lot contains 100 spots. Each spot has capacity for two units:
+Retains the original timestamp and vehicle data.
 
-- A car uses two units and occupies a spot by itself.
-- A motorcycle uses one unit, so up to two motorcycles can share a spot.
+Parking Map
+Displays a 25×4 grid representing all 100 parking spots.
 
-## Data and limitations
+Color‑coded output:
 
-Parking data is held in memory and is cleared when the application exits. The code does not currently persist vehicle records or use its `ParkingTimeStamps` array; displayed times are generated when actions occur.
+Green: empty
 
+Yellow: partially filled
 
+Red: full
 
+Example from the code:
+Console.ForegroundColor = used == 0 ? ConsoleColor.Green : used < SpotSize ? ConsoleColor.DarkYellow : ConsoleColor.Red;
 
-classDiagram
-    class PragueParking {
-        <<static application>>
-        -int SpotCount
-        -int SpotSize
-        -int CarSize
-        -int McSize
-        -int MapColumns
-        -string[] ParkingSpots
-        -bool IsRunning
-        -DateTime?[] ParkingTimeStamps
-        -string[] MenuItems
-        +Main(args)
-        -ParkVehicle()
-        -RetrieveVehicle()
-        -SearchForVehicle()
-        -MoveVehicle()
-        -ShowMapOfParking()
-        -ListAllVehicles()
-        -ExitProgram()
-        -GetVehicles(spot)
-        -TypeOf(vehicle)
-        -RegOf(vehicle)
-        -SizeOf(type)
-        -UsedSize(spot)
-        -GetVehiclesInSpot(spot, reg)
-        -FindVehicle(reg)
-        -FindFreeSpot(type)
-        -AddToSpot(spot, type, reg)
-        -RemoveFromSpot(spot, reg)
-        -AskVehicleType()
-        -AskRegNr()
-        -Success(message)
-        -Error(message)
-        -GetPragueTime()
+List All Vehicles
+Counts all motorcycles and cars.
+
+Displays each parked vehicle with its spot number and registration number.
+
+Example output format:
+Spot 12: CAR ABC123
+
+Exit Program
+Asks for confirmation before terminating the application.
+
+Technical Architecture
+Data Structures
+ParkingSpots[100]:
+An array of nullable strings. Each string may contain one or more vehicles separated by |.
+Example from the code:
+ParkingSpots[spot] = ParkingSpots[spot] + "|" + vehicleEntry;
+
+Vehicle format:
+TYPE#REGNR#TIMESTAMP
+
+ParkingTimeStamps[]:
+Stores arrival timestamps (UTC).
+
+Constants
+SpotCount = 100
+
+SpotSize = 2
+
+CarSize = 2
+
+McSize = 1
+
+MapColumns = 25
+
+Menu System
+Navigation via Up/Down arrow keys and Enter.
+
+Menu items include: Park, Retrieve, Search, Move, Map, List, Exit.
+
+Time Handling
+Arrival timestamps stored in ISO 8601 UTC format:
+"O" (Round‑trip format)
+
+Converted to Prague time using:
+TimeZoneInfo.FindSystemTimeZoneById("Central European Standard Time")
+
+Installation & Running
+Requirements
+.NET 6 or later
+
+Windows terminal (for color output and key handling)
+
+Running the Application
+Clone or download the project files.
+
+Navigate to the project directory.
+
+Run the application:
+dotnet run
+Use arrow keys to navigate the menu.
+
+Code Structure
+PragueParking.cs
+ ├── Data & constants
+ ├── Main() and menu rendering
+ ├── ParkVehicle()
+ ├── RetrieveVehicle()
+ ├── SearchForVehicle()
+ ├── MoveVehicle()
+ ├── ShowMapOfParking()
+ ├── ListAllVehicles()
+ ├── ExitProgram()
+ ├── Parking logic (GetVehicles, FindVehicle, AddToSpot, RemoveFromSpot)
+ └── Input/Output helpers (AskVehicleType, AskRegNr, Success, Error)
+Error Handling
+The program uses a global flag ErrorOccurred to manage error states.
+When an error occurs, the user is prompted to retry the action or return to the main menu.
+
+Example from the code:
+Error("invalid registration number (1-10 characters, no spaces, '#' or '|'.");
