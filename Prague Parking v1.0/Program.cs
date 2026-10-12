@@ -117,14 +117,14 @@ public class PragueParking
         {
             Console.WriteLine("Park Vehicle\n");
 
-            string type = AskVehicleType();
+            string? type = AskVehicleType();
             if (type == null)
             {
                 return;
             }
 
 
-            string reg = AskRegNr();
+            string? reg = AskRegNr();
             if (reg == null)
             {
                 return;
@@ -160,7 +160,7 @@ public class PragueParking
         {
             Console.WriteLine("Retrieve vehicle\n");
 
-            string reg = AskRegNr();
+            string? reg = AskRegNr();
 
             if (reg == null)
             {
@@ -200,7 +200,7 @@ public class PragueParking
         {
             Console.WriteLine("Search for vehicle\n");
 
-            string reg = AskRegNr();
+            string? reg = AskRegNr();
             if (reg == null)
             {
                 return;
@@ -223,7 +223,7 @@ public class PragueParking
         {
             Console.WriteLine("Move vehicle\n");
 
-            string reg = AskRegNr();
+            string? reg = AskRegNr();
             if (reg == null)
                 return;
 
@@ -358,7 +358,7 @@ public class PragueParking
         //--------------------
         static string[] GetVehicles(int spot)
         {
-            if (string.IsNullOrEmpty(ParkingSpots[spot])) return new string[0];
+            if (string.IsNullOrEmpty(ParkingSpots[spot])) return Array.Empty<string>();
             return ParkingSpots[spot].Split('|', StringSplitOptions.RemoveEmptyEntries);
         }
 
@@ -444,7 +444,7 @@ public class PragueParking
         // Input / Output
         //-------------------
 
-        static string AskVehicleType()
+        static string? AskVehicleType()
         {
             Console.WriteLine("Vehicle type - (C)ar or (M)otorcycle? ");
             var key = Console.ReadKey(true);
@@ -455,7 +455,7 @@ public class PragueParking
             return null;
         }
 
-        static string AskRegNr()
+        static string? AskRegNr()
         {
             Console.Write("Registration number: ");
             string reg = (Console.ReadLine() ?? "").Trim().ToUpper();
