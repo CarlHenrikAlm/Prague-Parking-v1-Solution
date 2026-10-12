@@ -17,7 +17,7 @@ public class PragueParking
     const int CarSize = 2;
     const int McSize = 1;
     const int MapColumns = 25;
-    static string?[] ParkingSpots = new string?[SpotCount];
+    static string[] ParkingSpots = new string[SpotCount];
     static bool IsRunning = true;
     static bool ErrorOccurred = false;
     static DateTime?[] ParkingTimeStamps = new DateTime?[SpotCount];
@@ -433,7 +433,7 @@ public class PragueParking
                 }
             if (count == 0)
             {
-                ParkingSpots[spot] = null;
+                ParkingSpots[spot] = "";
             }
             else
             {
